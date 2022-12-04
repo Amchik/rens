@@ -56,7 +56,7 @@ struct RensQuestion rens_read_question(const char *buff) {
 	struct RensQuestion q;
 	size_t i;
 
-	for (i = 0; buff[i] != 0; i += buff[i] + 1);
+	for (i = 0; buff[i] != 0; i += ((uint8_t)buff[i] == 0xC0) ? 2 : buff[i] + 1);
 	q.qname.ptr = (unsigned char*)buff;
 	q.qname.len = i + 1;
 
@@ -86,7 +86,7 @@ struct RensResource rens_read_resource(const char *buff) {
 	struct RensResource r;
 	size_t i;
 
-	for (i = 0; buff[i] != 0; i += buff[i] + 1);
+	for (i = 0; buff[i] != 0; i += ((uint8_t)buff[i] == 0xC0) ? 2 : buff[i] + 1);
 	r.name.ptr = (unsigned char*)buff;
 	r.name.len = i++;
 
