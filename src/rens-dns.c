@@ -88,8 +88,9 @@ struct RensResource rens_read_resource(const char *buff) {
 
 	for (i = 0; buff[i] != 0; i += ((uint8_t)buff[i] == 0xC0) ? 2 : buff[i] + 1);
 	r.name.ptr = (unsigned char*)buff;
-	r.name.len = i++;
+	r.name.len = i + 1;
 
+	i++;
 	r.qtype  = (buff[i]     << 8) + buff[i + 1];
 	r.qclass = (buff[i + 2] << 8) + buff[i + 3];
 	r.ttl    =
