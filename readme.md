@@ -3,6 +3,13 @@
 	<p>Local DNS server with DoH and caching</p>
 </div>
 
+## Archived
+
+Parser ([`src/rens-dns.c`](https://github.com/ValgrindLLVM/rens/blob/master/src/rens-dns.c))
+is very hard to write. So it's shitty and buggy.
+
+Use `systemd-resolved` or [`tiny-rens`](https://github.com/ValgrindLLVM/tiny-rens) (like this, but without cache).
+
 ## How it's works?
 
 Just forward packages over HTTPS (DoH). Good if `systemd-resolved` is is not available
